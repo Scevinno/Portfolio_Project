@@ -18,15 +18,18 @@ library_mix:
   measured_lines: 165
   source: "source code of the published portfolio projects"
   updated: 2026-07-05
+  # Single-accent version (5 Jul). To revert to the teal-shade ramp, restore:
+  # pandas #0f9488 / scikit-learn #2dd4bf / Matplotlib #7deee0 and re-add the
+  # label dots in index.html (or git revert this commit).
   libraries:
     - name: pandas
       pct: 46
-      color: "#0f9488"
+      color: "#2dd4bf"
     - name: scikit-learn
       pct: 32
       color: "#2dd4bf"
     - name: Matplotlib
       pct: 11
-      color: "#7deee0"
+      color: "#2dd4bf"
   # The remainder to 100% (core-Python lines) is deliberately left as empty
   # track on the bar — no segment, no label.
