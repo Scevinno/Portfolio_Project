@@ -3,8 +3,8 @@
 title: Nikolas Scevko
 description: "Hi, I'm Nik — I like solving real problems with data, building models and tools that make the numbers useful, not just accurate. My portfolio focuses on hands-on projects with a clear practical payoff."
 
-# Served as a GitHub Pages project site at https://scevinno.github.io/Career_Portfolio_v2
-baseurl: "/Career_Portfolio_v2"
+# Served as a GitHub Pages project site at https://scevinno.github.io/Portfolio_Project
+baseurl: "/Portfolio_Project"
 url: "https://scevinno.github.io"
 
 # Rotating job titles in the hero

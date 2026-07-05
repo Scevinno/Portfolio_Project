@@ -44,6 +44,4 @@
     <line x1="51" y1="51" x2="90" y2="90" stroke="#2E86C1"/>
   </g>
 
-  <!-- single title -->
-  <text x="70" y="545" font-family="Futura, 'Century Gothic', sans-serif" font-size="40" font-weight="700" fill="url(#gb)">Undervalued homes in London</text>
 </svg>
