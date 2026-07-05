@@ -9,7 +9,7 @@ body_class: page-home
     <div class="hero-grid" aria-hidden="true"></div>
     <div class="hero-inner">
       <div class="hero-copy reveal">
-        <p class="kicker">// {{ site.location | downcase }} — data portfolio</p>
+        <p class="kicker">{{ site.location | downcase }} — data portfolio</p>
         <h1 class="hero-name">Nikolas<br>Scevko<span class="accent-dot">.</span></h1>
         <p class="hero-role"><span class="role-static">I work as a</span> <span class="role-rotator" id="role-rotator" data-roles='{{ site.roles | jsonify }}'>{{ site.roles | first }}</span></p>
         <p class="hero-bio">I like solving real problems with data — building models and tools that make the numbers <em>useful</em>, not just accurate. Below is hands-on work with a clear practical payoff.</p>
@@ -22,7 +22,7 @@ body_class: page-home
       <div class="hero-portrait reveal">
         <div class="portrait-frame">
           <img src="{{ site.avatar_image | relative_url }}" alt="Portrait of Nikolas Scevko" width="600" height="600">
-          <span class="portrait-tag">// {{ site.location | downcase }}</span>
+          <span class="portrait-tag">{{ site.location | downcase }}</span>
         </div>
       </div>
     </div>
@@ -31,8 +31,8 @@ body_class: page-home
   <!-- ============ PROJECTS ============ -->
   <section class="projects" id="projects">
     <div class="section-head reveal">
-      <p class="kicker">// selected work</p>
-      <h2 class="section-title">Case studies</h2>
+      <p class="kicker">selected work</p>
+      <h2 class="section-title">Portfolio projects</h2>
       <p class="section-count">{{ site.posts | size | prepend: '0' | slice: -2, 2 }} project{% if site.posts.size != 1 %}s{% endif %} — full write-ups, code included</p>
     </div>
 
@@ -56,7 +56,7 @@ body_class: page-home
             {% endfor %}
           </dl>
           {% endif %}
-          <span class="project-cta">Read the case study <span aria-hidden="true">→</span></span>
+          <span class="project-cta">View the project <span aria-hidden="true">→</span></span>
         </div>
         {% if post.image %}
         <div class="project-cover">
@@ -67,10 +67,6 @@ body_class: page-home
     </article>
     {% endfor %}
 
-    <div class="projects-more reveal">
-      <p class="kicker">// more in the pipeline</p>
-      <p>New case studies are added as they’re finished — the full history lives on <a href="{{ site.github }}" target="_blank" rel="noopener">GitHub</a>.</p>
-    </div>
   </section>
 
 </main>
