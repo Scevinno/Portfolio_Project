@@ -1,0 +1,44 @@
+# Custom-built dark data-editorial theme (no remote theme)
+
+title: Nikolas Scevko
+description: "Hi, I'm Nik — I like solving real problems with data, building models and tools that make the numbers useful, not just accurate. My portfolio focuses on hands-on projects with a clear practical payoff."
+
+# Served as a GitHub Pages project site at https://scevinno.github.io/Career_Portfolio_v2
+baseurl: "/Career_Portfolio_v2"
+url: "https://scevinno.github.io"
+
+# Rotating job titles in the hero
+roles:
+  - Data Scientist
+  - Data Analyst
+  - ML Specialist
+  - BI Developer
+  - Python Developer
+
+location: "London, UK"
+resume_url: /docs/placeholder-resume.pdf
+avatar_image: /img/profile_picture.png
+
+linkedin: "https://www.linkedin.com/in/nikolas-scevko"
+github: "https://github.com/Scevinno"
+email: "nikolas.scevko@gmail.com"
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-sitemap
+
+defaults:
+  - scope:
+      type: posts
+    values:
+      layout: post
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md

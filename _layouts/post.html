@@ -1,0 +1,51 @@
+---
+layout: default
+body_class: page-post
+---
+<div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progress-bar"></div></div>
+
+<main class="post-main">
+  <header class="post-hero">
+    <div class="post-hero-inner">
+      <a class="back-link" href="{{ '/' | relative_url }}#projects"><span aria-hidden="true">←</span> All projects</a>
+      <div class="project-tags">
+        {% for tag in page.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+      </div>
+      <h1 class="post-title">{{ page.title }}</h1>
+      {% if page.summary %}<p class="post-dek">{{ page.summary }}</p>{% endif %}
+      <div class="post-meta">
+        {% if page.stack %}<span class="meta-item"><span class="meta-label">stack</span>{{ page.stack }}</span>{% endif %}
+        <span class="meta-item"><span class="meta-label">published</span>{{ page.date | date: "%b %Y" }}</span>
+        <span class="meta-item"><span class="meta-label">read</span>{% assign words = content | strip_html | number_of_words %}{{ words | divided_by: 200 | at_least: 1 }} min</span>
+      </div>
+      {% if page.metrics %}
+      <dl class="project-metrics post-metrics">
+        {% for m in page.metrics %}
+        <div class="metric">
+          <dt>{{ m.label }}</dt>
+          <dd>{{ m.value }}</dd>
+        </div>
+        {% endfor %}
+      </dl>
+      {% endif %}
+    </div>
+  </header>
+
+  {% if page.image %}
+  <figure class="post-cover">
+    <img src="{{ page.image | relative_url }}" alt="Cover illustration for {{ page.title }}">
+  </figure>
+  {% endif %}
+
+  <article class="post-content">
+    {{ content }}
+  </article>
+
+  <aside class="post-end">
+    <p class="kicker">// end of case study</p>
+    <div class="post-end-actions">
+      <a class="btn btn-primary" href="{{ '/' | relative_url }}#projects">More projects <span aria-hidden="true">→</span></a>
+      <a class="btn btn-ghost" href="mailto:{{ site.email }}">Get in touch</a>
+    </div>
+  </aside>
+</main>

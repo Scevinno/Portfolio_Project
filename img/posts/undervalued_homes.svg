@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Undervalued homes in London">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2C2F36"/>
+      <stop offset="1" stop-color="#17181B"/>
+    </linearGradient>
+    <linearGradient id="gb" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#17A589"/>
+      <stop offset="1" stop-color="#2E86C1"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#bg)"/>
+
+  <!-- faint grid -->
+  <g stroke="#3E4250" stroke-width="1" opacity="0.35">
+    <line x1="0" y1="150" x2="800" y2="150"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="0" y1="420" x2="800" y2="420"/>
+    <line x1="200" y1="0" x2="200" y2="600"/>
+    <line x1="400" y1="0" x2="400" y2="600"/>
+    <line x1="600" y1="0" x2="600" y2="600"/>
+  </g>
+
+  <!-- regression-style scatter + green-to-blue fit line -->
+  <g>
+    <line x1="70" y1="440" x2="740" y2="130" stroke="url(#gb)" stroke-width="4" stroke-linecap="round"/>
+    <g fill="#e7e7e7">
+      <circle cx="130" cy="422" r="6"/><circle cx="210" cy="384" r="6"/>
+      <circle cx="290" cy="368" r="6"/><circle cx="360" cy="316" r="6"/>
+      <circle cx="440" cy="294" r="6"/><circle cx="520" cy="238" r="6"/>
+      <circle cx="600" cy="214" r="6"/><circle cx="690" cy="166" r="6"/>
+    </g>
+    <!-- an "undervalued" point sitting below the line, highlighted -->
+    <circle cx="475" cy="372" r="11" fill="#1ABC9C" stroke="#ffffff" stroke-width="3"/>
+    <line x1="475" y1="372" x2="475" y2="284" stroke="#1ABC9C" stroke-width="2" stroke-dasharray="5 5"/>
+  </g>
+
+  <!-- house with magnifier -->
+  <g transform="translate(575,250)" stroke="#ffffff" stroke-width="6" fill="none" stroke-linejoin="round" stroke-linecap="round">
+    <circle cx="0" cy="0" r="72" fill="#101010"/>
+    <path d="M -38 6 L 0 -32 L 38 6 Z" fill="none"/>
+    <rect x="-26" y="6" width="52" height="32"/>
+    <line x1="51" y1="51" x2="90" y2="90" stroke="#2E86C1"/>
+  </g>
+
+  <!-- single title -->
+  <text x="70" y="545" font-family="Futura, 'Century Gothic', sans-serif" font-size="40" font-weight="700" fill="url(#gb)">Undervalued homes in London</text>
+</svg>
