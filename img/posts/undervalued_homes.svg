@@ -111,15 +111,14 @@
   </g>
   <path d="M 52 274 C 260 230 520 150 758 72" fill="none" stroke="url(#gb)" stroke-width="5" stroke-linecap="round"/>
 
-  <!-- the gap between fair price and what it sold for -->
-  <line x1="316" y1="205" x2="316" y2="384" stroke="#1ABC9C" stroke-width="2.5" stroke-dasharray="6 6"/>
-  <circle cx="316" cy="205" r="7" fill="#1ABC9C"/>
+  <!-- this sale sits well below the fair-price line: undervalued -->
+  <circle cx="316" cy="268" r="8" fill="#1ABC9C"/>
+  <line x1="316" y1="278" x2="316" y2="386" stroke="#1ABC9C" stroke-width="2.5" stroke-dasharray="6 6"/>
 
-  <!-- magnifier hero, examining the find -->
-  <g transform="translate(430,344)">
-    <circle r="74" fill="#17A589" opacity="0.10"/>
-    <circle r="74" fill="none" stroke="#ffffff" stroke-width="8"/>
-    <line x1="54" y1="54" x2="112" y2="112" stroke="#2E86C1" stroke-width="11" stroke-linecap="round"/>
-    <path d="M -26 4 L -8 22 L 32 -20" fill="none" stroke="url(#gb)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- magnifier hero: the glass found the house -->
+  <g transform="translate(316,458)">
+    <circle r="78" fill="#17A589" opacity="0.08"/>
+    <circle r="78" fill="none" stroke="#ffffff" stroke-width="8"/>
+    <line x1="56" y1="-56" x2="116" y2="-116" stroke="#2E86C1" stroke-width="11" stroke-linecap="round"/>
   </g>
 </svg>

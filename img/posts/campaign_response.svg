@@ -80,7 +80,6 @@
     <circle cx="360" cy="356" r="8" opacity="0.9"/>
     <circle cx="428" cy="416" r="8" opacity="0.7"/>
     <circle cx="490" cy="470" r="8" opacity="0.5"/>
-    <circle cx="544" cy="516" r="8" opacity="0.35"/>
   </g>
 
   <!-- the target: hero of the piece -->
@@ -89,8 +88,7 @@
     <circle r="86" fill="none" stroke="url(#gb)" stroke-width="6"/>
     <circle r="54" fill="none" stroke="#ffffff" stroke-width="4.5" opacity="0.85"/>
     <circle r="24" fill="#1ABC9C"/>
-    <!-- the strike: a letter dead-centre with impact burst -->
-    <use href="#mail" transform="translate(-2,-2) rotate(6) scale(0.9)"/>
+    <!-- impact burst -->
     <g stroke="#25dcb8" stroke-width="3.5" stroke-linecap="round" opacity="0.9">
       <line x1="-44" y1="-38" x2="-60" y2="-52"/>
       <line x1="44" y1="-38" x2="60" y2="-52"/>
@@ -99,12 +97,4 @@
     </g>
   </g>
 
-  <!-- ambient data dots -->
-  <g fill="#e7e7e7">
-    <circle cx="86" cy="180" r="3.5" opacity="0.5"/>
-    <circle cx="130" cy="120" r="3" opacity="0.35"/>
-    <circle cx="330" cy="90" r="3.5" opacity="0.5"/>
-    <circle cx="736" cy="450" r="3.5" opacity="0.4"/>
-    <circle cx="700" cy="520" r="3" opacity="0.3"/>
-  </g>
 </svg>
