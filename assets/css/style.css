@@ -794,8 +794,9 @@ img { max-width: 100%; display: block; }
   .hero-portrait { order: -1; justify-content: flex-start; }
   .portrait-frame { width: min(220px, 60%); }
   .project-link { grid-template-columns: auto 1fr; }
+  .project-link > * { min-width: 0; }
   .project-cover { grid-column: 2; }
-  .project-cover img { max-width: 420px; }
+  .project-cover img { max-width: min(420px, 100%); }
 }
 
 @media (max-width: 600px) {
@@ -805,8 +806,19 @@ img { max-width: 100%; display: block; }
   .project-link { grid-template-columns: 1fr; padding: 1.6rem; gap: 1.2rem; }
   .project-index { padding-top: 0; }
   .project-cover { grid-column: 1; }
+  .project-cover img { width: 100%; max-width: 100%; }
   .metric { padding: 0.6rem 0.9rem; }
   .metric dd { font-size: 1.1rem; }
-  .project-metrics { width: 100%; }
+  /* metrics stack as full-width rows — side borders become messy fragments when the row wraps */
+  .project-metrics { width: 100%; display: grid; grid-template-columns: 1fr; }
+  .metric { border-right: none; border-bottom: 1px solid var(--line); }
+  .metric:last-child { border-bottom: none; }
+  .post-content code { overflow-wrap: anywhere; }
   .footer-links { gap: 1.2rem; }
+}
+
+@media (max-width: 380px) {
+  .nav-inner { padding: 0.85rem 1rem; }
+  .nav-links { gap: 0.8rem; font-size: 0.86rem; }
+  .nav-cta { padding: 0.35rem 0.6rem; }
 }
