@@ -4,23 +4,27 @@
       <stop offset="0" stop-color="#252a36"/>
       <stop offset="1" stop-color="#121419"/>
     </linearGradient>
+    <linearGradient id="house" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1ec8a5"/>
+      <stop offset="1" stop-color="#148f9e"/>
+    </linearGradient>
     <radialGradient id="glowT" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#17A589" stop-opacity="0.30"/>
+      <stop offset="0" stop-color="#17A589" stop-opacity="0.28"/>
       <stop offset="1" stop-color="#17A589" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="glowB" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#2E86C1" stop-opacity="0.30"/>
+      <stop offset="0" stop-color="#2E86C1" stop-opacity="0.28"/>
       <stop offset="1" stop-color="#2E86C1" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="glowM" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#1ec8a5" stop-opacity="0.22"/>
+      <stop offset="0" stop-color="#1ec8a5" stop-opacity="0.30"/>
       <stop offset="1" stop-color="#1ec8a5" stop-opacity="0"/>
     </radialGradient>
   </defs>
 
   <rect width="800" height="600" fill="url(#bg)"/>
 
-  <!-- faint chart grid -->
+  <!-- faint chart grid (shared v3 finish) -->
   <g stroke="#3E4250" stroke-width="1" opacity="0.26">
     <line x1="0" y1="130" x2="800" y2="130"/>
     <line x1="0" y1="260" x2="800" y2="260"/>
@@ -32,71 +36,126 @@
     <line x1="640" y1="0" x2="640" y2="600"/>
   </g>
 
-  <!-- faint index line running behind the clusters -->
-  <path d="M 0 470 L 90 440 L 170 452 L 260 396 L 340 410 L 430 340 L 520 356 L 610 282 L 700 296 L 800 230"
-        fill="none" stroke="#3E4250" stroke-width="2.5" opacity="0.55"/>
-
   <!-- cluster glows -->
-  <circle cx="215" cy="415" r="150" fill="url(#glowT)"/>
-  <circle cx="565" cy="205" r="160" fill="url(#glowB)"/>
-  <circle cx="430" cy="455" r="120" fill="url(#glowM)"/>
+  <circle cx="195" cy="195" r="185" fill="url(#glowT)"/>
+  <circle cx="600" cy="185" r="195" fill="url(#glowB)"/>
+  <circle cx="395" cy="435" r="190" fill="url(#glowM)"/>
 
-  <!-- cluster 1: teal, low-left (defensive) -->
-  <g fill="#17A589">
-    <circle cx="185" cy="400" r="9"/>
-    <circle cx="228" cy="378" r="7"/>
-    <circle cx="255" cy="428" r="8"/>
-    <circle cx="205" cy="452" r="6"/>
-    <circle cx="165" cy="437" r="7"/>
-    <circle cx="242" cy="405" r="5"/>
-    <circle cx="196" cy="426" r="5"/>
-    <circle cx="271" cy="392" r="6"/>
+  <!-- ============ cluster 1: industrials (teal, upper-left) ============ -->
+  <g>
+    <line x1="100" y1="250" x2="300" y2="250" stroke="#17A589" stroke-width="2" opacity="0.35" stroke-linecap="round"/>
+    <!-- warehouse -->
+    <path d="M84 224 Q107 206 130 224 Z" fill="#1ABC9C"/>
+    <rect x="84" y="224" width="46" height="26" fill="#148F77"/>
+    <rect x="100" y="232" width="14" height="18" fill="#0e1219" opacity="0.75"/>
+    <!-- factory hall with sawtooth roof -->
+    <path d="M115 205 L115 182 L150 205 L150 182 L185 205 L185 182 L220 205 Z" fill="#1ABC9C"/>
+    <rect x="115" y="205" width="105" height="45" fill="#17A589"/>
+    <polygon points="220,205 238,196 238,241 220,250" fill="#117A65"/>
+    <g fill="#0e1219" opacity="0.75">
+      <rect x="127" y="215" width="10" height="12"/>
+      <rect x="145" y="215" width="10" height="12"/>
+      <rect x="163" y="215" width="10" height="12"/>
+      <rect x="181" y="215" width="10" height="12"/>
+      <rect x="199" y="215" width="10" height="12"/>
+    </g>
+    <!-- chimneys -->
+    <rect x="244" y="138" width="15" height="112" fill="#17A589"/>
+    <polygon points="259,138 267,134 267,246 259,250" fill="#117A65"/>
+    <rect x="242" y="132" width="19" height="8" fill="#1ABC9C"/>
+    <rect x="286" y="168" width="13" height="82" fill="#17A589"/>
+    <polygon points="299,168 306,164 306,246 299,250" fill="#117A65"/>
+    <rect x="284" y="162" width="17" height="7" fill="#1ABC9C"/>
   </g>
-  <ellipse cx="218" cy="414" rx="92" ry="66" fill="none" stroke="#17A589" stroke-width="2"
-           stroke-dasharray="7 7" opacity="0.55"/>
+  <circle cx="195" cy="195" r="140" fill="none" stroke="#17A589" stroke-width="2.5"
+          stroke-dasharray="8 8" opacity="0.55"/>
 
-  <!-- cluster 2: blue, upper-right (growth) -->
-  <g fill="#2E86C1">
-    <circle cx="530" cy="185" r="8"/>
-    <circle cx="575" cy="160" r="9"/>
-    <circle cx="615" cy="205" r="7"/>
-    <circle cx="552" cy="232" r="6"/>
-    <circle cx="598" cy="248" r="7"/>
-    <circle cx="637" cy="172" r="5"/>
-    <circle cx="510" cy="222" r="5"/>
-    <circle cx="580" cy="200" r="5"/>
+  <!-- ============ cluster 2: tech (blue, upper-right) ============ -->
+  <g>
+    <line x1="490" y1="245" x2="710" y2="245" stroke="#2E86C1" stroke-width="2" opacity="0.35" stroke-linecap="round"/>
+    <!-- low glass block -->
+    <polygon points="497,172 533,172 545,166 509,166" fill="#21618C"/>
+    <rect x="497" y="172" width="36" height="73" fill="#2E86C1"/>
+    <polygon points="533,172 545,166 545,239 533,245" fill="#1B4F72"/>
+    <g fill="#0e1219" opacity="0.55">
+      <rect x="502" y="181" width="26" height="3"/>
+      <rect x="502" y="191" width="26" height="3"/>
+      <rect x="502" y="201" width="26" height="3"/>
+      <rect x="502" y="211" width="26" height="3"/>
+      <rect x="502" y="221" width="26" height="3"/>
+      <rect x="502" y="231" width="26" height="3"/>
+    </g>
+    <!-- flagship tower with antenna -->
+    <polygon points="545,85 583,85 597,78 559,78" fill="#21618C"/>
+    <rect x="545" y="85" width="38" height="160" fill="#2E86C1"/>
+    <polygon points="583,85 597,78 597,238 583,245" fill="#1B4F72"/>
+    <line x1="564" y1="85" x2="564" y2="62" stroke="#eef2f7" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="564" cy="58" r="3" fill="#eef2f7"/>
+    <g fill="#0e1219" opacity="0.55">
+      <rect x="550" y="95" width="28" height="3.5"/>
+      <rect x="550" y="106" width="28" height="3.5"/>
+      <rect x="550" y="117" width="28" height="3.5"/>
+      <rect x="550" y="128" width="28" height="3.5"/>
+      <rect x="550" y="139" width="28" height="3.5"/>
+      <rect x="550" y="150" width="28" height="3.5"/>
+      <rect x="550" y="161" width="28" height="3.5"/>
+      <rect x="550" y="172" width="28" height="3.5"/>
+      <rect x="550" y="183" width="28" height="3.5"/>
+      <rect x="550" y="194" width="28" height="3.5"/>
+      <rect x="550" y="205" width="28" height="3.5"/>
+      <rect x="550" y="216" width="28" height="3.5"/>
+      <rect x="550" y="227" width="28" height="3.5"/>
+    </g>
+    <rect x="552" y="140" width="6" height="5" fill="#eef2f7" opacity="0.85"/>
+    <rect x="568" y="173" width="6" height="5" fill="#eef2f7" opacity="0.85"/>
+    <!-- second tower -->
+    <polygon points="616,128 662,128 676,121 630,121" fill="#21618C"/>
+    <rect x="616" y="128" width="46" height="117" fill="#2E86C1"/>
+    <polygon points="662,128 676,121 676,238 662,245" fill="#1B4F72"/>
+    <g fill="#0e1219" opacity="0.55">
+      <rect x="621" y="137" width="36" height="3.5"/>
+      <rect x="621" y="148" width="36" height="3.5"/>
+      <rect x="621" y="159" width="36" height="3.5"/>
+      <rect x="621" y="170" width="36" height="3.5"/>
+      <rect x="621" y="181" width="36" height="3.5"/>
+      <rect x="621" y="192" width="36" height="3.5"/>
+      <rect x="621" y="203" width="36" height="3.5"/>
+      <rect x="621" y="214" width="36" height="3.5"/>
+      <rect x="621" y="225" width="36" height="3.5"/>
+    </g>
+    <rect x="640" y="192" width="7" height="5" fill="#eef2f7" opacity="0.85"/>
   </g>
-  <ellipse cx="572" cy="203" rx="98" ry="72" fill="none" stroke="#2E86C1" stroke-width="2"
-           stroke-dasharray="7 7" opacity="0.55"/>
+  <circle cx="600" cy="185" r="150" fill="none" stroke="#2E86C1" stroke-width="2.5"
+          stroke-dasharray="8 8" opacity="0.55"/>
 
-  <!-- cluster 3: mixed teal-light, centre (the in-betweeners) -->
-  <g fill="#1ec8a5" opacity="0.9">
-    <circle cx="405" cy="440" r="7"/>
-    <circle cx="445" cy="418" r="6"/>
-    <circle cx="470" cy="468" r="7"/>
-    <circle cx="418" cy="483" r="5"/>
-    <circle cx="452" cy="448" r="4"/>
+  <!-- ============ cluster 3: residential (light teal, lower-centre) ============ -->
+  <g>
+    <line x1="275" y1="495" x2="515" y2="495" stroke="#1ec8a5" stroke-width="2" opacity="0.35" stroke-linecap="round"/>
+    <!-- left house -->
+    <polygon points="283,442 320,410 357,442" fill="#25dcb8"/>
+    <rect x="288" y="442" width="64" height="53" fill="#1ec8a5"/>
+    <g fill="#0e1219" opacity="0.8">
+      <rect x="296" y="452" width="12" height="10"/>
+      <rect x="330" y="452" width="12" height="10"/>
+      <rect x="310" y="467" width="13" height="28"/>
+    </g>
+    <!-- centre house: the glowing focal home -->
+    <polygon points="364,428 409,390 454,428" fill="#25dcb8"/>
+    <rect x="371" y="428" width="76" height="67" fill="url(#house)"/>
+    <g fill="#0e1219" opacity="0.8">
+      <rect x="381" y="440" width="15" height="12"/>
+      <rect x="422" y="440" width="15" height="12"/>
+      <rect x="400" y="461" width="15" height="34"/>
+    </g>
+    <!-- right house -->
+    <polygon points="458,448 489,420 520,448" fill="#25dcb8"/>
+    <rect x="463" y="448" width="52" height="47" fill="#1ec8a5"/>
+    <g fill="#0e1219" opacity="0.8">
+      <rect x="471" y="458" width="11" height="10"/>
+      <rect x="495" y="458" width="11" height="10"/>
+      <rect x="483" y="473" width="11" height="22"/>
+    </g>
   </g>
-  <ellipse cx="438" cy="452" rx="70" ry="52" fill="none" stroke="#1ec8a5" stroke-width="2"
-           stroke-dasharray="7 7" opacity="0.45"/>
-
-  <!-- unclustered field: quiet grey points -->
-  <g fill="#9aa4b0" opacity="0.5">
-    <circle cx="352" cy="300" r="4"/>
-    <circle cx="392" cy="262" r="3.5"/>
-    <circle cx="322" cy="352" r="3.5"/>
-    <circle cx="472" cy="322" r="4"/>
-    <circle cx="302" cy="240" r="3"/>
-    <circle cx="672" cy="352" r="3.5"/>
-    <circle cx="702" cy="432" r="4"/>
-    <circle cx="122" cy="292" r="3.5"/>
-    <circle cx="92" cy="522" r="3"/>
-    <circle cx="542" cy="512" r="3.5"/>
-    <circle cx="632" cy="482" r="3"/>
-    <circle cx="252" cy="532" r="3.5"/>
-  </g>
-
-  <!-- the outlier: high and alone, ringed -->
-  <circle cx="712" cy="92" r="9" fill="#eef2f7"/>
-  <circle cx="712" cy="92" r="20" fill="none" stroke="#eef2f7" stroke-width="2" stroke-dasharray="4 5" opacity="0.7"/>
+  <circle cx="395" cy="435" r="145" fill="none" stroke="#1ec8a5" stroke-width="2.5"
+          stroke-dasharray="8 8" opacity="0.5"/>
 </svg>
