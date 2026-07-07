@@ -3,18 +3,16 @@ layout: post
 title: Clustering the S&P 500 by Market Behaviour
 image: "/img/posts/sp500_clustering.svg"
 tags: [Machine Learning, Clustering, Python]
-summary: "K-means groups 499 S&P 500 companies by how they actually traded and earned through 2025 — built on a dataset I assembled from scratch — to test whether stocks really behave the way their sector labels say they should."
+summary: "K-means groups 422 S&P 500 companies into five behavioural tribes — on a 2025 dataset I assembled from scratch — to test whether stocks really behave the way their sector labels say they should."
 stack: "Python · pandas · scikit-learn · yfinance"
 metrics:
-  - value: "499"
+  - value: "5"
+    label: "behavioural groups"
+  - value: "422"
     label: "companies clustered"
-  - value: "6"
-    label: "behavioural groups found"
-  - value: "28%"
-    label: "of tech stocks behave alike"
 ---
 
-Every S&P 500 company carries a sector label — Utilities, Information Technology, Health Care — assigned by a classification committee, not by the market. I built a dataset of how each of 499 companies **actually behaved through 2025** — returns, volatility, valuation, profitability, growth — and let a K-means model group them with no knowledge of those labels. The question: do stocks behave like their sector says they should?
+Every S&P 500 company carries a sector label — Utilities, Information Technology, Health Care — assigned by a classification committee, not by the market. I built a dataset of how each of 499 companies **actually behaved through 2025** — returns, volatility, valuation, profitability, growth — and let a K-means model group the 422 with complete records, with no knowledge of those labels. The question: do stocks behave like their sector says they should?
 
 ---
 
@@ -24,10 +22,13 @@ Every S&P 500 company carries a sector label — Utilities, Information Technolo
 - [01. Results](#01-results)
 - [02. Data Overview](#02-data-overview)
 - [03. Data Preparation](#03-data-preparation)
-- [04. Choosing How Many Clusters](#04-choosing-how-many-clusters)
-- [05. Training the Model & Profiling the Clusters](#05-training-the-model--profiling-the-clusters)
-- [06. Do Stocks Follow Their Sector Labels?](#06-do-stocks-follow-their-sector-labels)
-- [07. Growth & Next Steps](#07-growth--next-steps)
+- [04. K-Means](#04-k-means)
+  - [Feature Scaling](#kmeans-scaling)
+  - [Choosing How Many Clusters](#kmeans-k)
+  - [Model Training](#kmeans-training)
+  - [Profiling the Clusters](#kmeans-profiling)
+- [05. Do Stocks Follow Their Sector Labels?](#05-do-stocks-follow-their-sector-labels)
+- [06. Growth & Next Steps](#06-growth--next-steps)
 
 ---
 
@@ -39,7 +40,7 @@ Sector labels drive real decisions — index funds, sector ETFs, portfolio diver
 
 **Actions**
 
-There was no ready-made table for this, so I built one: for every current S&P 500 constituent I assembled ten 2025-anchored metrics — price behaviour computed from a full year of daily prices, fundamentals from the four quarterly statements ending within 2025 — into one row per company. On that table I ran an unsupervised **K-means** pipeline: min-max scaling, an elbow (WCSS) search for the right number of clusters, then profiling each cluster and mapping its sector make-up.
+There was no ready-made table for this, so I built one: for every current S&P 500 constituent I assembled ten 2025-anchored metrics — price behaviour computed from a full year of daily prices, fundamentals from the four quarterly statements ending within 2025 — into one row per company. On that table I ran an unsupervised **K-means** pipeline: min-max scaling, an elbow (WCSS) search for the number of clusters, a seeded 50-restart fit so the groups are stable and reproducible, then profiling each cluster and mapping its sector make-up.
 
 **Growth & Next Steps**
 
@@ -49,22 +50,21 @@ Heavy-tailed ratios like P/E compress under min-max scaling, so a log-transform 
 
 ## 01. Results
 
-The model settled on **six behavioural groups** — and they only partly respect the sector map. Three findings stand out:
+The model finds **five behavioural groups** — and they only partly respect the sector map. Three findings stand out:
 
-**Some sectors are real behavioural tribes.** **71% of Utilities** and **67% of Consumer Staples** companies land in the same cluster — a low-beta, high-dividend, low-volatility group that behaves exactly like the defensive reputation of those sectors. Their label genuinely tells you how they trade.
+**Some sectors are real behavioural tribes.** **87% of Utilities**, **85% of Real Estate** and **75% of Consumer Staples** companies land in the same cluster — a low-beta, high-dividend, low-volatility group that behaves exactly like the defensive reputation of those sectors. Their label genuinely tells you how they trade.
 
-**Tech is not one thing.** Information Technology is the most fragmented sector in the index: its **biggest cluster holds only 28%** of its companies, with the rest spread across four other groups. Two stocks with the same "tech" label can sit in completely different behavioural worlds — one trading like a steady industrial, another like a rocket.
+**But across the whole index, the labels are only half-right.** Just **55% of companies** sit in their sector's most common behavioural group. Information Technology is the sharpest example: its biggest slice (43%) doesn't behave like "tech" at all — it trades alongside the economy-linked cyclicals — while the rest scatters across all four other groups. Two stocks with the same tech label can sit in completely different behavioural worlds.
 
-**The market has a momentum tribe that ignores sector lines.** A small cluster of 22 companies — Palantir, Robinhood, Micron, Carvana, GE Vernova among them — averaged an **+86% return in 2025** at nearly double the market's volatility and a beta of 2.0. It spans tech, financials, industrials and consumer names: behaviour, not sector, is what these stocks share.
+**The market has a momentum tribe that ignores sector lines.** A cluster of 24 companies averaged a **+76% return in 2025** at more than double the market's volatility and a beta of 2.0. Tesla, Oracle, Palantir, AMD and Micron sit in it — but so do power utilities riding the AI build-out (Constellation, Vistra), crypto-adjacent finance (Coinbase, Robinhood) and data-centre industrials (Vertiv). Behaviour, not sector, is what these stocks share.
 
 | Cluster | Companies | Return | Div. yield | Volatility | Beta | Character |
 |---|---|---|---|---|---|---|
-| Defensive income | 69 | +5% | 3.8% | 24% | 0.3 | Utilities & staples heartland |
-| Quality value | 51 | +13% | 3.3% | 26% | 0.7 | Cheap (P/E ~20), high-margin payers |
-| Steady mega-caps | 145 | +8% | 1.0% | 27% | 0.7 | The index's calm core |
-| Cyclical traders | 55 | +14% | 2.6% | 37% | 1.2 | Energy & materials tilt |
-| Volatile growth | 80 | +5% | 0.4% | 44% | 1.4 | High-beta, growth-priced |
-| Momentum high-flyers | 22 | +86% | 0.4% | 62% | 2.0 | The 2025 rocket ships |
+| Defensive income | 132 | +8% | 3.6% | 26% | 0.6 | Utilities, real estate & staples heartland |
+| Steady compounders | 145 | +6% | 1.1% | 27% | 0.6 | The index's calm, reinvesting core |
+| Cyclical workhorses | 112 | +10% | 1.0% | 41% | 1.3 | Economy-linked industrials, semis & banks |
+| Momentum growth | 24 | +76% | 0.4% | 63% | 2.0 | The 2025 rocket ships |
+| Mega-cap giants | 9 | +33% | 0.5% | 37% | 1.3 | The $1.6–4.5T platform businesses |
 
 ---
 
@@ -93,7 +93,7 @@ One deliberate choice: **missing values stay missing**. A company with negative 
 
 ## 03. Data Preparation
 
-K-means has no concept of a label, an identifier, or a text column — it just measures distances between rows. So preparation means three things: deal with the gaps, remove everything that isn't a behavioural measurement, and put every metric on the same scale.
+K-means has no concept of a label, an identifier, or a text column — it just measures distances between rows. So preparation means two things here: deal with the gaps, and remove everything that isn't a behavioural measurement.
 
 ```python
 from sklearn.cluster import KMeans
@@ -109,20 +109,25 @@ data_for_clustering.dropna(how="any", inplace=True)
 
 # identifiers and the sector label are held out of the feature set
 data_for_clustering_scaled = data_for_clustering.drop(["ticker", "company", "fundamentals_basis", "sector"], axis=1)
-
-# normalise every metric to the same 0-1 footing
-scale_norm = MinMaxScaler()
-data_for_clustering_scaled = pd.DataFrame(scale_norm.fit_transform(data_for_clustering_scaled),
-                                          columns=data_for_clustering_scaled.columns)
 ```
-
-The scaling step is not optional for K-means. Market cap runs into the thousands of billions while beta lives between 0 and 3 — unscaled, every distance the model measures would be a market-cap comparison with noise attached. Min-max normalisation gives each of the ten metrics an equal vote.
 
 The **sector column is deliberately held out**. The whole point is to see what groups emerge *without* it — it comes back at the end as the answer key.
 
 ---
 
-## 04. Choosing How Many Clusters
+## 04. K-Means
+
+### Feature Scaling {#kmeans-scaling}
+
+Scaling is not optional for K-means. Market cap runs into the thousands of billions while beta lives between 0 and 3 — unscaled, every distance the model measures would be a market-cap comparison with noise attached. Min-max normalisation puts each of the ten metrics on the same 0–1 footing, giving every metric an equal vote.
+
+```python
+scale_norm = MinMaxScaler()
+data_for_clustering_scaled = pd.DataFrame(scale_norm.fit_transform(data_for_clustering_scaled),
+                                          columns=data_for_clustering_scaled.columns)
+```
+
+### Choosing How Many Clusters {#kmeans-k}
 
 K-means needs to be told how many groups to find. The standard tool is the **elbow method**: fit the model at every k from 1 to 11, record the Within-Cluster Sum of Squares (how tightly each cluster hugs its centre), and look for the point where adding another cluster stops buying much tightness.
 
@@ -131,7 +136,7 @@ k_values = list(range(1, 12))
 wcss_list = []
 
 for k in k_values:
-    kmeans = KMeans(n_clusters=k, random_state=42)
+    kmeans = KMeans(n_clusters=k)
     kmeans.fit(data_for_clustering_scaled)
     wcss_list.append(kmeans.inertia_)
 
@@ -143,14 +148,12 @@ plt.tight_layout()
 plt.show()
 ```
 
-The curve bends gradually rather than snapping at one obvious point — common on real financial data, where group boundaries are soft. I chose **k = 6**: past six, each extra cluster shaved little off the WCSS, and the six groups that emerge are distinct enough to describe in plain English — which is its own kind of validation for an unsupervised model.
+The curve bends gradually rather than snapping at one obvious point — common on real financial data, where group boundaries are soft. I chose **k = 5**: past five, each extra cluster shaved little off the WCSS, and the five groups that emerge are distinct enough to describe in plain English — which is its own kind of validation for an unsupervised model.
 
----
-
-## 05. Training the Model & Profiling the Clusters
+### Model Training {#kmeans-training}
 
 ```python
-kmeans = KMeans(n_clusters=6, random_state=42)
+kmeans = KMeans(n_clusters=5, n_init=50, random_state=50)
 kmeans.fit(data_for_clustering_scaled)
 
 # attach each company's cluster back onto the readable data
@@ -158,7 +161,11 @@ data_for_clustering["cluster"] = kmeans.labels_
 data_for_clustering["cluster"].value_counts()
 ```
 
-The labels go back onto the **unscaled** table, which matters for the next step: profiling in real units. Averaging each metric per cluster turns six anonymous group numbers into six recognisable investor archetypes — the table in [01. Results](#01-results):
+Two arguments here do the reliability work. K-means starts from randomly placed centres, so a single unseeded run can land in a different local solution every time — early runs of this model reshuffled companies between clusters on every execution. `n_init=50` makes each fit try 50 different starting positions and keep only the best; with that in place the same five groups re-emerge under *any* seed, which is the real test that the structure lives in the data rather than in the randomness. `random_state` then pins the run so every number in this write-up reproduces exactly.
+
+### Profiling the Clusters {#kmeans-profiling}
+
+The labels go back onto the **unscaled** table, which matters for this step: profiling in real units. Averaging each metric per cluster turns five anonymous group numbers into five recognisable investor archetypes — the table in [01. Results](#01-results):
 
 ```python
 cluster_summary = data_for_clustering.groupby("cluster")[["annual_return_pct", "dividend_yield_pct",
@@ -166,11 +173,11 @@ cluster_summary = data_for_clustering.groupby("cluster")[["annual_return_pct", "
     "eps_growth_pct", "revenue_growth_pct", "market_cap_b"]].mean().reset_index()
 ```
 
-Reading the profiles is where the model earns its keep. A 3.8% average yield with a 0.3 beta is unmistakably a defensive income group; a 62% volatility with a 2.0 beta and +86% returns is unmistakably the momentum crowd. The model was never told these categories exist — it found them in the numbers.
+Reading the profiles is where the model earns its keep. A 3.6% average yield with a 0.6 beta is unmistakably a defensive income group; a 63% volatility with a 2.0 beta and +76% returns is unmistakably the momentum crowd. The model was never told these categories exist — it found them in the numbers.
 
 ---
 
-## 06. Do Stocks Follow Their Sector Labels?
+## 05. Do Stocks Follow Their Sector Labels?
 
 Now the held-out sector column comes back. Cross-tabulating sector against cluster — normalised within each sector — shows exactly how much of each sector shares one behaviour:
 
@@ -193,27 +200,32 @@ plt.tight_layout()
 plt.show()
 ```
 
-Each sector's bar splits into the behavioural clusters its companies actually landed in — and the spectrum runs from tribal to scattered:
+Each sector's bar splits into the behavioural clusters its companies actually landed in — sorted from the most tribal sector to the most scattered:
+
+![Cluster composition within each sector — stacked bar chart]({{ "/img/posts/sp500_sector_clusters.png" | relative_url }})
+
+The spectrum runs from tribal to scattered:
 
 | Sector | Largest single cluster | Reading |
 |---|---|---|
-| Utilities | 71% | The label works — one shared behaviour |
-| Consumer Staples | 67% | Same — the classic defensive block |
-| Energy | 60% | Cohesive, in the cyclical-trader group |
-| Health Care | 56% | Mostly one group, with a volatile fringe |
-| Financials | 39% | Split three ways — banks ≠ exchanges ≠ insurers |
-| Information Technology | 28% | The label tells you almost nothing about behaviour |
+| Utilities | 87% | The label works — one shared behaviour |
+| Real Estate | 85% | Same defensive block, different address |
+| Consumer Staples | 75% | The classic defensive heartland |
+| Health Care | 58% | Mostly steady compounders, with a fringe |
+| Information Technology | 43% | Scattered across all five groups — and its biggest slice behaves like a cyclical, not like "tech" |
+| Financials | 42% | The most divided label — banks ≠ exchanges ≠ insurers |
 
 For a portfolio builder the practical takeaway is direct: holding five different tech names may still be one concentrated behavioural bet — or five genuinely different ones. The sector label can't tell you; the behaviour can.
 
 ---
 
-## 07. Growth & Next Steps
+## 06. Growth & Next Steps
 
 Concrete improvements queued for the next iteration:
 
-- **Tame the heavy tails.** A handful of true-but-extreme values (a P/E above 6,000, an ROE near 4,000%) compress everyone else into a sliver of the min-max scale, muting those metrics' influence. Log-transforming the ratio columns — or switching to a robust scaler — would let them speak properly.
+- **Tame the heavy tails.** A handful of true-but-extreme values (a P/E above 6,000, an ROE near 4,000%) compress everyone else into a sliver of the min-max scale, muting those metrics' influence — and they drag cluster *averages* around, which is why the profiling step deserves a median view too. Log-transforming the ratio columns — or switching to a robust scaler — would let them speak properly.
 - **Validate the cluster count.** The elbow read was a judgement call; a silhouette-score sweep across k would put a number on it.
+- **Deduplicate dual share classes.** Alphabet enters twice (GOOG and GOOGL) — one row per company is the honest count.
 - **Cluster on co-movement.** Summary statistics describe each stock alone. Clustering on the correlation of daily returns would group stocks by how they move *together* — the definition of behaviour that matters most for diversification.
 
 ---
