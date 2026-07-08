@@ -58,13 +58,13 @@ The model finds **five behavioural groups** — and they only partly respect the
 
 **The market has a momentum tribe that ignores sector lines.** A cluster of 24 companies averaged a **+76% return in 2025** at more than double the market's volatility and a beta of 2.0. Tesla, Oracle, Palantir, AMD and Micron sit in it — but so do power utilities riding the AI build-out (Constellation, Vistra), crypto-adjacent finance (Coinbase, Robinhood) and data-centre industrials (Vertiv). Behaviour, not sector, is what these stocks share.
 
-| Cluster | Companies | Return | Div. yield | Volatility | Beta | Character |
-|---|---|---|---|---|---|---|
-| Defensive income | 132 | +8% | 3.6% | 26% | 0.6 | Utilities, real estate & staples heartland |
-| Steady compounders | 145 | +6% | 1.1% | 27% | 0.6 | The index's calm, reinvesting core |
-| Cyclical workhorses | 112 | +10% | 1.0% | 41% | 1.3 | Economy-linked industrials, semis & banks |
-| Momentum growth | 24 | +76% | 0.4% | 63% | 2.0 | The 2025 rocket ships |
-| Mega-cap giants | 9 | +33% | 0.5% | 37% | 1.3 | The $1.6–4.5T platform businesses |
+| Cluster | Character | Companies | Return | Div. yield | Beta | Rev. growth | P/E ratio | Profit margin |
+|---|---|---|---|---|---|---|---|---|
+| 0 | Defensive income | 132 | +8% | 3.6% | 0.6 | +6% | 27× | 18% |
+| 1 | Mega cap companies | 9 | +33% | 0.5% | 1.3 | +24% | 38× | 33% |
+| 2 | Cyclicals | 112 | +10% | 1.0% | 1.3 | +8% | 43× | 12% |
+| 3 | Momentum growth | 24 | +76% | 0.4% | 2.0 | +29% | 81× | 21% |
+| 4 | Steady compounders | 145 | +6% | 1.1% | 0.6 | +8% | 74× | 14% |
 
 ---
 
