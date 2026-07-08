@@ -52,11 +52,11 @@ The scaling choice is the first thing to revisit — min-max compresses heavy-ta
 
 The model finds **five behavioural groups** — three findings stand out:
 
-**Some sectors have behavioural consistency.** **87% of Utilities**, **85% of Real Estate** and **75% of Consumer Staples** companies land in the same cluster — a low-beta, high-dividend, low-volatility group that behaves exactly like the defensive reputation of those sectors. Their label genuinely tells you how they trade.
+**Some sectors have behavioural consistency.** **87% of Utilities**, **85% of Real Estate** and **75% of Consumer Staples** companies land in the same cluster — the Defensive Income group that aligns exactly with the conservative reputation of those sectors. Their label genuinely tells you how they trade.
 
 **But across the whole index, the labels are only half-right.** Just **55% of companies** sit in their sector's most common behavioural group. Information Technology is the sharpest example: its biggest slice (43%) doesn't behave like "tech" at all — it trades alongside the economy-linked cyclicals — while the rest scatters across all four other groups. Two stocks with the same tech label can sit in completely different behavioural worlds.
 
-**The market has a momentum tribe that ignores sector lines.** A cluster of 24 companies averaged a **+76% return in 2025** at more than double the market's volatility and a beta of 2.0. Tesla, Oracle, Palantir, AMD and Micron sit in it — but so do power utilities riding the AI build-out (Constellation, Vistra), crypto-adjacent finance (Coinbase, Robinhood) and data-centre industrials (Vertiv). Behaviour, not sector, is what these stocks share.
+**The momentum growth cluster is predominantly a technology story.** More than half of its members carry the Information Technology label — chipmakers and semiconductor-equipment names like AMD and Micron alongside AI-linked software such as Oracle and Palantir. And the companies that join them from other sectors read like the same theme wearing a different label: power utilities feeding the data-centre build-out (Constellation, Vistra), industrials fitting out server halls (Vertiv), and high-beta platforms like Tesla, Coinbase and Robinhood. The model only ever saw behaviour, so this is an observation rather than an explanation — but the group's make-up lines up naturally with 2025's AI-driven growth, and that is the working assumption for why these stocks moved together.
 
 | Cluster | Character | Companies | Return | Div. yield | Beta | Rev. growth | P/E ratio | Profit margin |
 |---|---|---|---|---|---|---|---|---|
