@@ -6,8 +6,10 @@ tags: [Causal Inference, Time Series, Python]
 summary: "A Bayesian causal impact model builds the season Manchester City should have had around Rodri's ACL injury — and measures the gap between that counterfactual and what actually happened."
 stack: "Python · pandas · pycausalimpact"
 metrics:
-  - value: "−25"
-    label: "points vs the counterfactual"
+  - value: "−33%"
+    label: "relative effect"
+  - value: "31"
+    label: "matches in 2024/25"
   - value: "−0.81"
     label: "points per match"
 ---
