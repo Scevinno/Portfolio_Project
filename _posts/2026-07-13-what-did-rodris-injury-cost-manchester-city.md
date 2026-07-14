@@ -1,9 +1,9 @@
 ---
 layout: post
-title: What Did Rodri's Injury Cost Manchester City?
+title: Measuring the Causal Impact of Rodri's Injury on Manchester City
 image: "/img/posts/rodri_causal_impact.svg"
 tags: [Causal Inference, Time Series, Python]
-summary: "A Bayesian causal impact model builds the season Manchester City should have had around Rodri's ACL injury — and measures the gap between that counterfactual and what actually happened."
+summary: "A causal impact model builds the season Manchester City should have had if it weren't for Rodri's ACL injury — and measures the gap between the counterfactual and what actually happened."
 stack: "Python · pandas · pycausalimpact"
 metrics:
   - value: "−33%"
@@ -14,7 +14,7 @@ metrics:
     label: "points per match"
 ---
 
-On 22 September 2024, Rodri tore his ACL twenty minutes into Manchester City's match against Arsenal and was ruled out for the season. City had just won four consecutive Premier League titles; by May they were scrapping for a European place. This project asks the question every fan argued about all year — **how much of that collapse was one player?** — and answers it with a causal impact model: build the season City *should* have had, then measure the gap.
+Early in the 2024–25 season, Rodri — the midfielder Manchester City's game was built around — suffered a serious knee injury and was ruled out for the rest of the season. City had spent years as the dominant team in English football; without him they fell away almost immediately, and the season ended as their weakest in nearly a decade. This project asks the question every fan argued about all year — **how much of that collapse was one player?** — and answers it with a causal impact model: build the season City *should* have had, then measure the gap.
 
 ---
 
