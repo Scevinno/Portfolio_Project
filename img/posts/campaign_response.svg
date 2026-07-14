@@ -50,20 +50,22 @@
     <polygon points="-105,-52 0,30 105,-52" fill="none" stroke="#0f1216" stroke-width="4" stroke-linejoin="round" opacity="0.5"/>
   </g>
 
-  <!-- flight path: the model's decision curve -->
-  <path d="M 250 350 C 330 250 420 200 500 180 C 560 166 600 160 636 158" fill="none" stroke="url(#gb)" stroke-width="3" stroke-dasharray="7 8" opacity="0.75"/>
+  <!-- the target: proper concentric board, semi-transparent so the flight reads over it -->
+  <g transform="translate(636,208)" opacity="0.55">
+    <circle r="118" fill="#eef2f7"/>
+    <circle r="92" fill="url(#gb)"/>
+    <circle r="64" fill="#eef2f7"/>
+    <circle r="36" fill="url(#gb)"/>
+    <circle r="118" fill="none" stroke="#0f1216" stroke-width="3" opacity="0.6"/>
+  </g>
 
-  <!-- letters in flight -->
+  <!-- flight path: the model's decision curve, landing on the board -->
+  <path d="M 250 350 C 330 250 420 200 500 180 C 560 166 606 170 630 198" fill="none" stroke="url(#gb)" stroke-width="3" stroke-dasharray="7 8" opacity="0.75"/>
+
+  <!-- letters in flight; the fourth lands on the bull -->
   <use href="#mail" transform="translate(300,304) rotate(-24) scale(0.92)"/>
   <use href="#mail" transform="translate(392,232) rotate(-13)"/>
   <use href="#mail" transform="translate(496,186) rotate(-4) scale(1.1)"/>
-
-  <!-- the target: hero of the piece -->
-  <g transform="translate(636,208)">
-    <circle r="118" fill="#101318" stroke="#ffffff" stroke-width="7"/>
-    <circle r="86" fill="none" stroke="url(#gb)" stroke-width="6"/>
-    <circle r="54" fill="none" stroke="#ffffff" stroke-width="4.5" opacity="0.85"/>
-    <circle r="24" fill="#1ABC9C"/>
-  </g>
+  <use href="#mail" transform="translate(636,208) scale(1.1)"/>
 
 </svg>
