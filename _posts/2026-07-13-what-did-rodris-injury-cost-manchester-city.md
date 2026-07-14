@@ -101,7 +101,7 @@ Two details matter in the control column. The six clubs are **fixed** — Arsena
 
 ## 04. Data Preparation
 
-The dataset was assembled from published season results: filter City's fixtures out of two seasons of Premier League results, convert each match to points from City's perspective, and label the two windows around the injury date. The control column aggregates the six clubs' results between consecutive City match dates, so each row carries a contemporaneous reading of how the league's other big sides were performing. Rodri's availability per match came from his published match logs rather than memory — which is exactly how the three August 2024 matches he sat out, and the mid-season rest between two Champions League legs, ended up correctly flagged.
+The dataset was assembled from published season results: filter City's fixtures out of two seasons of Premier League results, convert each match to points from City's perspective, and label the two windows around the injury date. The control column is built match by match: every result the six control clubs played is first converted to points (3 for a win, 1 for a draw, 0 for a loss), and each City row then takes the average points per game those clubs collected in the gap between City's previous match and this one — usually around a week of fixtures. If none of the six happened to play in that gap, the window widens to the seven days leading up to the match, so the reading is never empty. Each row therefore carries a contemporaneous measure of how the league's other big sides were performing at that exact point of the season. Rodri's availability per match came from his published match logs.
 
 ---
 
