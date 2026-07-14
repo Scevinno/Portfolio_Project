@@ -14,7 +14,7 @@ metrics:
     label: "points per match"
 ---
 
-Early in the 2024–25 season, Rodri — the midfielder Manchester City's game was built around — suffered a serious knee injury and was ruled out for the rest of the season. City had spent years as the dominant team in English football; without him they fell away almost immediately, and the season ended as their weakest in nearly a decade. This project asks the question every fan argued about all year — **how much of that collapse was one player?** — and answers it with a causal impact model: build the season City *should* have had, then measure the gap.
+Early in the 2024–25 season, Rodri — the midfielder in Manchester City — suffered a serious knee injury and was ruled out for the rest of the season. City had spent years as the dominant team in Premier League; without him they fell away almost immediately, and the season ended as their weakest in nearly a decade. This project asks the question every fan argued about — **how much of that collapse was one player?** — and answers it with a causal impact model: build the season City *should* have had, then measure the gap.
 
 ---
 
@@ -38,7 +38,7 @@ Early in the 2024–25 season, Rodri — the midfielder Manchester City's game w
 
 **Context**
 
-A before-and-after comparison can show that City got worse after the injury — but worse *than what*? Every season has its own difficulty, and points dropped in a title race need a baseline to be judged against. Causal impact analysis supplies that baseline: a counterfactual trajectory of the season without the injury, built from City's own pre-injury form plus a control group the injury could not touch.
+A before-and-after comparison can show that City got worse after the injury — but worse *than what*? Comparing average points before and after isn't enough on its own, because plenty of other things change from one season to the next. To say what the injury itself cost, you need an estimate of how the season would have gone *without* it. That is what causal impact analysis builds: it learns what City's results looked like while Rodri was fit, then projects the season they would most likely have had if nothing had changed. The cost of the injury is the gap between that projected season and the one that actually happened.
 
 **Actions**
 
@@ -46,11 +46,11 @@ I assembled a match-level dataset spanning one year either side of the injury da
 
 **Applications**
 
-Quantifying what a single player's absence costs is a real currency in football. Clubs weigh exactly this when setting transfer and wage budgets — a midfielder whose absence costs 0.8 points a game justifies a very different fee from one whose numbers travel unnoticed. The same measurement supports squad planning (how much cover a position genuinely needs), insurance pricing on player policies, and performance departments making the case for load management with points rather than opinions.
+Quantifying what a single player's absence costs carries a real importance in football. Clubs weigh exactly this when setting transfer and wage budgets — a midfielder whose absence costs 0.8 points a game justifies a very different fee from one whose impact is less significant. The same measurement supports squad planning or performance departments making the case for load management with points rather than opinions.
 
 **Growth & Next Steps**
 
-The control series is the first thing to strengthen — bookmaker-implied expected points would track fixture difficulty far better than club form alone. Beyond that: underlying performance metrics to trace *how* the drop happened, and repeating the design for other long absences to put the result in context.
+The model judges City against a benchmark — currently the results of six other top clubs over the same period. Bookmaker odds would make a better benchmark: they exist for every match and already factor in how hard each game is expected to be. Beyond that, deeper match statistics would show *how* the points were lost — fewer goals scored, more conceded, or both — and running the same analysis on other clubs' long injuries would show whether an effect this size is unusual or normal.
 
 ---
 
