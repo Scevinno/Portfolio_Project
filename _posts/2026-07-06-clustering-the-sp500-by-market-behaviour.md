@@ -3,13 +3,13 @@ layout: post
 title: Clustering the S&P 500 by Market Behaviour
 image: "/img/posts/sp500_clustering.svg"
 tags: [Machine Learning, Clustering, Python]
-summary: "K-means groups 422 S&P 500 companies into five distinct groups — on a 2025 dataset assembled via yfinance — to explore how stocks behave across the 11 defined sectors."
+summary: "K-means groups ~420 S&P 500 companies into five distinct groups — on a 2025 dataset assembled via yfinance — to explore how stocks behave across the 11 defined sectors."
 stack: "Python · pandas · scikit-learn · yfinance"
 metrics:
   - value: "5"
     label: "cluster groups"
-  - value: "422"
-    label: "companies clustered"
+  - value: "~420"
+    label: "2025 S&P companies"
 ---
 
 Every S&P 500 company carries a sector label — Utilities, Information Technology, Health Care, and more. I collected data representing high-level detail on how each of 499 companies **actually behaved through 2025** — returns, volatility, valuation, profitability, growth — and let a K-means model group the 422 with complete records, with no knowledge of those labels. The question: do stocks tend to trend in a certain consistent way across their sector tags?
